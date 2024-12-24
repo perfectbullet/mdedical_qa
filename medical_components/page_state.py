@@ -36,10 +36,14 @@ def set_initial_state():
 
     if "selected_model" not in st.session_state:
         try:
-            if "medical_QA_2024-12-13-v4:latest" in st.session_state["ollama_models"]:
+            if "qwen2.5:14b" in st.session_state["ollama_models"]:
                 st.session_state["selected_model"] = (
-                    "medical_QA_2024-12-13-v4:latest"  # Default to qwen2.5:14b on initial load
+                    "qwen2.5:14b"  # Default to qwen2.5:14b on initial load
                 )
+            # if "medical_QA_2024-12-13-v4:latest" in st.session_state["ollama_models"]:
+            #     st.session_state["selected_model"] = (
+            #         "medical_QA_2024-12-13-v4:latest"  # Default to qwen2.5:14b on initial load
+            #     )
             elif "qwen2.5:14b" in st.session_state["ollama_models"]:
                 st.session_state["selected_model"] = (
                     "qwen2.5:14b"
