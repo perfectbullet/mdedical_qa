@@ -1,11 +1,8 @@
-import json
-import os
 from typing import Any, Dict, List
 
 import streamlit as st
-from langchain_community.vectorstores import Chroma
-from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.callbacks import BaseCallbackHandler
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_ollama import ChatOllama
 
 from rag_document.rng_document import create_langchain_ollama_llm
@@ -41,16 +38,23 @@ def langchain_chat_stream_pure(q, st):
     Returns:
         yield steam
     """
+    systme_prompt = '''你是一个医生, 根据用户提问回答用户的问题。
+如果用户的问题不是医学问题，请写「我是医疗模型，这个方面我不擅长。」。
+    '''
     sources = []
     ollama_endpoint = st.session_state["ollama_endpoint"]
     selected_model = st.session_state["selected_model"]
 
+
     prompt = ChatPromptTemplate.from_messages(
         [
-            ("system", "你是一个医生, 根据用户提问回答用户的问题"),
+            ("system", systme_prompt),
             ("user", "{question}")
         ]
     )
+
+
+
     llm = get_langchain_ollama_llm(base_url=ollama_endpoint, model=selected_model)
     print('llm is {}'.format(llm))
     chain = prompt | llm

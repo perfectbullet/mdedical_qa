@@ -84,7 +84,6 @@ def set_initial_state():
     if "top_k" not in st.session_state:
         st.session_state["top_k"] = 3
 
-
     if "chunk_size" not in st.session_state:
         st.session_state["chunk_size"] = 1024
 
