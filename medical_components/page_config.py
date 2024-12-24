@@ -20,10 +20,10 @@ def set_page_config():
         # menu_items={},
     )
 
-    with st.sidebar:
-        # with st.container(border=True):
-        #     sources()
-        settings()
+    # with st.sidebar:
+    #     # with st.container(border=True):
+    #     #     sources()
+    #     settings()
 
     # 修改页面布局
     st.markdown(

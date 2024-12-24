@@ -14,7 +14,8 @@ def set_initial_state():
         st.session_state["last_chat_input"] = '请输入'
 
     if "sidebar_state" not in st.session_state:
-        st.session_state["sidebar_state"] = "expanded"
+        # `initial_sidebar_state` must be `"auto"` or `"expanded"` or `"collapsed"`
+        st.session_state["sidebar_state"] = "collapsed"
 
     if "ollama_endpoint" not in st.session_state:
         st.session_state["ollama_endpoint"] = OLLAMA_BASE_URL
